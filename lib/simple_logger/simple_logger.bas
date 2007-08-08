@@ -11,8 +11,7 @@
 
 '# By default, logger don't do anything
 constructor SimpleLogger()
-    _level = Severity.DEBUG
-    _is_open = false
+  '# default values where established using '= Value' in class definition
 end constructor
 
 constructor SimpleLogger(byref new_filename as string)
@@ -68,11 +67,11 @@ sub SimpleLogger.__SUB__(byref message as string)
 end sub
 #endmacro
 
-SUB_LOGGER(debug, DEBUG)
 SUB_LOGGER(info, INFO)
 SUB_LOGGER(warn, WARN)
 SUB_LOGGER(error, ERROR)
 SUB_LOGGER(fatal, FATAL)
+SUB_LOGGER(debug, DEBUG)
 
 sub SimpleLogger.add_to_log(byval message_level as Severity, _
                             byref message as string)
@@ -81,7 +80,7 @@ sub SimpleLogger.add_to_log(byval message_level as Severity, _
     dim formatted_message as string
     
     '# only try if logging level is acceptable
-    if (message_level >= _level) then
+    if (message_level <= _level) then
         select case message_level
             case Severity.DEBUG: level_text = "DEBUG"
             case Severity.INFO: level_text = "INFO"

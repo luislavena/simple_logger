@@ -1,2 +1,6 @@
+*0.1.1* (2007-08-08) - Bugfix release.
+  * Moved Severity into SimpleLogger class to reduce Global namespace pollution. 
+  * Reversed the Severity levels, excluding DEBUG messages by default.
+  
 *0.1* (2007-08-08)
   * Initial Release.

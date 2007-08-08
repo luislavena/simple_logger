@@ -12,30 +12,31 @@
 
 #inclib "simple_logger"
 
-'# DEBUG < INFO < WARN < ERROR < FATAL
-enum Severity
-    DEBUG
-    INFO
-    WARN
-    ERROR
-    FATAL
-end enum
-
 type SimpleLogger
     declare constructor()
     declare constructor(byref as string)
     declare destructor()
+    
+    '# Severity Enum
+    '# INFO < WARN < ERROR < FATAL < DEBUG
+    enum Severity
+        INFO
+        WARN
+        ERROR
+        FATAL
+        DEBUG
+    end enum
     
     '# methods
     declare sub reopen(byref as string)
     declare sub release()
     
     '# logging methods
-    declare sub debug(byref as string)
     declare sub info(byref as string)
     declare sub warn(byref as string)
     declare sub error(byref as string)
     declare sub fatal(byref as string)
+    declare sub debug(byref as string)
     
     '# properties [RW]
     declare property level as Severity
@@ -46,10 +47,12 @@ type SimpleLogger
     declare property filename as string
     
     private:
-        _level as Severity = Severity.DEBUG
+        '# by default log everything except DEBUG messages
+        _level as Severity = Severity.FATAL
         _handle as integer
         _filename as string
-        _is_open as boolean
+        '# no file is open by default ;-)
+        _is_open as boolean = false
         
         declare sub add_to_log(byval as Severity, byref as string)
 end type
