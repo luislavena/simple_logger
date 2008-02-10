@@ -82,12 +82,18 @@ sub SimpleLogger.add_to_log(byval message_level as Severity, _
     '# only try if logging level is acceptable
     if (message_level <= _level) then
         select case message_level
-            case Severity.DEBUG: level_text = "DEBUG"
-            case Severity.INFO: level_text = "INFO"
-            case Severity.WARN: level_text = "WARN"
-            case Severity.ERROR: level_text = "ERROR"
-            case Severity.FATAL: level_text = "FATAL"
-            case else: level_text = "UNKNOWN"
+            case Severity.DEBUG:
+                level_text = "DEBUG"
+            case Severity.INFO:
+                level_text = "INFO "
+            case Severity.WARN:
+                level_text = "WARN "
+            case Severity.ERROR:
+                level_text = "ERROR"
+            case Severity.FATAL:
+                level_text = "FATAL"
+            case else:
+                level_text = "UNKNOWN"
         end select
         
         '# [2007-04-07 14:48:18] ERROR : TEST
