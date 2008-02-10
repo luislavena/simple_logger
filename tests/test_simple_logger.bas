@@ -61,8 +61,5 @@ namespace Suite_Test_Simple_Logger
         add_test(test_default_level)
         add_test(test_adjust_level)
         add_test(test_reopen_filename)
-        'add_test("test_create_with_filename", @test_create_with_filename)
-        'add_test("test_logging_higher_level", @test_logging_higher_level)
-        'add_test("test_logging_lower_level", @test_logging_lower_level)
     end sub
 end namespace

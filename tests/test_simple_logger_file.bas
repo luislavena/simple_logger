@@ -48,6 +48,7 @@ namespace Suite_Test_Simple_Logger_Filename
         
         '# now a valid level
         logger->fatal("a fatal error")
+        
         '# we need to release the file, still in buffer...
         logger->release
         
